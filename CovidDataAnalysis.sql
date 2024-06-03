@@ -1,7 +1,6 @@
-/*	Data Analyst Portfolio Project | SQL Data Exploration 
-	Analysis of Covid data - Comparision across globe with reference to Canada and India
-	Used JOINS  CTE | TEMP TABLES | STORED PROCEDURES | WINDOWS FUNCTIONS | 
-	AGGREGATE FUNCTIONS | CONVERTING DATA TYPES 
+/* Data Analyst Portfolio Project | SQL Data Exploration 
+   Analysis of Covid data - Comparision across globe with reference to Canada and India
+   Used JOINS  CTE | TEMP TABLES | STORED PROCEDURES | WINDOWS FUNCTIONS | AGGREGATE FUNCTIONS | CONVERTING DATA TYPES 
 */
 
 select * 
@@ -17,7 +16,7 @@ order by 1,2
 --TOTAL CASES V/S TOTAL DEATHS
 select location, date, total_cases, total_deaths, (total_deaths/total_cases)*100 as Death_Percentage
 from [Portfolio Project Covid]..CovidDeaths
---where location like '%states' or 
+--where location LIKE '%states' or 
 where location in ('china','india') and continent is not null
 order by 1,2
 
@@ -139,5 +138,5 @@ from [Portfolio Project Covid]..CovidDeaths as dea
 join [Portfolio Project Covid]..CovidVax vax
 on dea.location=vax.location and dea.date=vax.date
 where dea.continent is not null
-
+	
 select * from PercentVaccinated
