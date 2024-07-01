@@ -9,18 +9,13 @@ run;
 proc freq data=invtrend.data; 
     tables Age_group Education Occupation / missing; 
 run;
+
 * Summary Statistics of Income by Education ;
 proc means data=invtrend.data;  
 class education; 
 var Income investments; 
 title "Summary Statistics of Income by Education"; 
 run; 
-
-proc means data=invtrend.invdata;  
-class age_group;  
-var investments;  
-title "Summary Statistics of Investments by age_group";  
-run;
 
 proc tabulate data=invtrend.data; 
   class age_group education occupation; 
@@ -72,4 +67,3 @@ proc timeseries data=invtrend.data plots=(series corr);
 	var int / transform=none dif=0; 
 	crossvar price / transform=none dif=0; 
 run;
-
